@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Encrypted Stats Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="intro" aria-labelledby="dashboard-title">
+        <p class="eyebrow">GitHub Pages static dashboard</p>
+        <h1 id="dashboard-title">Encrypted Stats Dashboard</h1>
+        <p class="notice">No raw personal data is included in this published dashboard.</p>
+      </section>
+
+      <section class="unlock-panel" aria-labelledby="unlock-title">
+        <div>
+          <h2 id="unlock-title">Unlock aggregate stats</h2>
+          <p>Enter the dashboard password to decrypt the published data locally in this browser.</p>
+        </div>
+
+        <form id="unlock-form" class="unlock-form">
+          <label for="password">Password</label>
+          <div class="password-row">
+            <input id="password" name="password" type="password" autocomplete="current-password" required>
+            <button type="submit">Unlock</button>
+          </div>
+          <p id="status" class="status" role="status" aria-live="polite">Encrypted stats are loaded only after unlock.</p>
+        </form>
+      </section>
+
+      <section id="dashboard" class="dashboard hidden" aria-live="polite">
+        <div class="section-heading">
+          <h2>Project statistics</h2>
+          <p>Aggregate values only.</p>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-block">
+            <span>Last updated</span>
+            <strong id="last-updated">-</strong>
+          </article>
+          <article class="stat-block">
+            <span>Total processed records</span>
+            <strong id="total-records">-</strong>
+          </article>
+          <article class="stat-block">
+            <span>Valid records</span>
+            <strong id="valid-records">-</strong>
+          </article>
+          <article class="stat-block">
+            <span>Duplicate records</span>
+            <strong id="duplicate-records">-</strong>
+          </article>
+        </div>
+
+        <div class="detail-list">
+          <div class="detail-row">
+            <span>Data source summary</span>
+            <p id="source-summary">-</p>
+          </div>
+          <div class="detail-row">
+            <span>Import readiness</span>
+            <p id="import-readiness">-</p>
+          </div>
+          <div class="detail-row">
+            <span>Validation status</span>
+            <p id="validation-status">-</p>
+          </div>
+          <div class="detail-row">
+            <span>Published safety status</span>
+            <p id="published-safety">-</p>
+          </div>
+        </div>
+
+        <div class="reports">
+          <div class="section-heading">
+            <h2>Latest reports</h2>
+            <p>Repository report filenames only.</p>
+          </div>
+          <ul id="reports-list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
