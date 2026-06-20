@@ -3,131 +3,118 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Encrypted Stats Dashboard</title>
+    <title>Executive Stats Dashboard</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <main class="shell">
-      <section class="intro" aria-labelledby="dashboard-title">
+      <section class="hero" aria-labelledby="dashboard-title">
         <div>
-          <p class="eyebrow">Encrypted internal audit dashboard</p>
-          <h1 id="dashboard-title">Project stats and publishing safety</h1>
-          <p class="lede">Unlock aggregate status data for the private repository and public GitHub Pages dashboard.</p>
+          <p class="kicker">Encrypted executive report</p>
+          <h1 id="dashboard-title">Internal Audit & Stats Dashboard</h1>
+          <p class="hero-copy">Закрытый отчет по агрегированным данным, email processing и безопасности публичной GitHub Pages публикации.</p>
         </div>
-        <p class="notice">No raw personal data is included in this published dashboard.</p>
+        <p class="safety-banner">No raw personal data is included in this published dashboard.</p>
       </section>
 
       <section class="unlock-panel" aria-labelledby="unlock-title">
         <div>
-          <h2 id="unlock-title">Unlock audit status</h2>
-          <p>Enter the dashboard password to decrypt encrypted aggregate data locally in this browser.</p>
+          <h2 id="unlock-title">Secure Access</h2>
+          <p>Введите пароль, чтобы расшифровать агрегированные данные локально в браузере. До ввода пароля отчет не отображается.</p>
         </div>
 
         <form id="unlock-form" class="unlock-form">
-          <label for="password">Dashboard password</label>
+          <label for="password">Password</label>
           <div class="password-row">
             <input id="password" name="password" type="password" autocomplete="current-password" required>
             <button type="submit">Unlock</button>
           </div>
-          <p id="status" class="status" role="status" aria-live="polite">Waiting for password. No data is decrypted yet.</p>
+          <p id="status" class="status" role="status" aria-live="polite">Ожидание пароля. Данные пока не расшифрованы.</p>
         </form>
       </section>
 
       <section id="dashboard" class="dashboard hidden" aria-live="polite">
-        <div class="dashboard-header">
-          <div>
-            <p class="eyebrow">Unlocked dashboard</p>
-            <h2>Audit snapshot</h2>
+        <section class="report-section executive-summary" aria-labelledby="summary-title">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">Executive Summary</p>
+              <h2 id="summary-title">Executive Summary</h2>
+              <p>Сводка по текущему состоянию данных, обработке email и безопасности публикации.</p>
+            </div>
+            <p class="safety-banner compact">This dashboard contains encrypted aggregate statistics only.</p>
           </div>
-          <p class="notice secondary">This dashboard contains encrypted aggregate statistics only.</p>
-        </div>
 
-        <section class="overview-grid" aria-label="Core statistics">
-          <article class="metric-card">
-            <span>Last updated</span>
-            <strong id="last-updated">Not available yet</strong>
-            <p id="dashboard-version">Version not available yet</p>
+          <div id="summary-cards" class="summary-grid"></div>
+        </section>
+
+        <section class="report-section" aria-labelledby="overview-title">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">Data Processing Overview</p>
+              <h2 id="overview-title">Data Processing Overview</h2>
+              <p>Общий статус обработки данных по всем файлам и источникам.</p>
+            </div>
+          </div>
+          <div id="overview-list" class="status-grid"></div>
+        </section>
+
+        <section class="report-section" aria-labelledby="files-title">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">File-Level Breakdown</p>
+              <h2 id="files-title">File-Level Breakdown</h2>
+              <p>Разрез по файлам: сколько записей найдено; сколько email обработано; сколько новых данных добавлено.</p>
+            </div>
+          </div>
+          <div id="file-breakdown" class="file-grid"></div>
+        </section>
+
+        <section class="report-section" aria-labelledby="chart-title">
+          <div class="section-heading">
+            <div>
+              <p class="kicker">New Data by Source</p>
+              <h2 id="chart-title">New Emails by Source</h2>
+              <p>Сравнение новых данных по источникам без публикации raw данных.</p>
+            </div>
+          </div>
+          <div class="chart-panel">
+            <canvas id="emails-chart" height="320" aria-label="New Emails by Source chart"></canvas>
+            <p id="chart-note" class="chart-note">Количество новых email по каждому источнику после обработки.</p>
+          </div>
+        </section>
+
+        <section class="report-section split-section">
+          <article>
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Email Processing Status</p>
+                <h2>Email Processing Status</h2>
+                <p>Сколько email уже обработано и какой статус готовности к дальнейшим действиям.</p>
+              </div>
+            </div>
+            <div id="email-status" class="status-grid compact-grid"></div>
           </article>
-          <article class="metric-card">
-            <span>Total records processed</span>
-            <strong id="total-records">Not available yet</strong>
-            <p>Aggregate processed count.</p>
-          </article>
-          <article class="metric-card">
-            <span>Valid records</span>
-            <strong id="valid-records">Not available yet</strong>
-            <p>Safe validation-ready records.</p>
-          </article>
-          <article class="metric-card">
-            <span>Duplicate records</span>
-            <strong id="duplicate-records">Not available yet</strong>
-            <p>Aggregate duplicate count.</p>
+
+          <article>
+            <div class="section-heading">
+              <div>
+                <p class="kicker">Safety & Publishing Status</p>
+                <h2>Safety & Publishing Status</h2>
+                <p>Проверка того, что публичная страница содержит только зашифрованные агрегированные данные.</p>
+              </div>
+            </div>
+            <div id="publishing-status" class="status-grid compact-grid"></div>
           </article>
         </section>
 
-        <section class="content-grid">
-          <article class="panel">
-            <div class="panel-heading">
-              <h3>Data overview</h3>
-              <span id="source-count" class="status-chip neutral">Not available yet</span>
-            </div>
-            <div class="status-list">
-              <div class="status-row">
-                <span>Validation status</span>
-                <strong id="validation-status">Not available yet</strong>
-              </div>
-              <div class="status-row">
-                <span>Import readiness</span>
-                <strong id="import-readiness">Not available yet</strong>
-              </div>
-              <div class="status-row">
-                <span>Publishing safety status</span>
-                <strong id="publishing-status">Not available yet</strong>
-              </div>
-            </div>
-          </article>
-
-          <article class="panel">
-            <div class="panel-heading">
-              <h3>Publishing status</h3>
-              <span id="pages-status-chip" class="status-chip neutral">Not available yet</span>
-            </div>
-            <div class="status-list">
-              <div class="status-row">
-                <span>GitHub Pages status</span>
-                <strong id="pages-status">Not available yet</strong>
-              </div>
-              <div class="status-row">
-                <span>Public repo status</span>
-                <strong id="public-repo-status">Not available yet</strong>
-              </div>
-              <div class="status-row">
-                <span>Latest workflow status</span>
-                <strong id="workflow-status">Not available yet</strong>
-              </div>
-              <div class="status-row">
-                <span>Latest public commit</span>
-                <strong id="latest-public-commit">Not available yet</strong>
-              </div>
-            </div>
-          </article>
-        </section>
-
-        <section class="action-panel" aria-labelledby="next-action-title">
+        <section class="report-section next-action" aria-labelledby="next-action-title">
           <div>
-            <p class="eyebrow">Next recommended action</p>
-            <h3 id="next-action-title">Keep the public dashboard refreshed after safe aggregate updates.</h3>
+            <p class="kicker">Next Recommended Action</p>
+            <h2 id="next-action-title">Next Recommended Action</h2>
+            <p>Рекомендуемый следующий шаг для улучшения качества базы и отчета.</p>
           </div>
-          <p id="next-action">Not available yet</p>
+          <strong id="next-action-text">Not available yet</strong>
           <a id="public-url" href="https://tatianasf.github.io/codex-community-stats/" rel="noopener">Open public dashboard</a>
-        </section>
-
-        <section class="reports">
-          <div class="panel-heading">
-            <h3>Latest reports</h3>
-            <span>Private repo references only</span>
-          </div>
-          <ul id="reports-list"></ul>
         </section>
       </section>
     </main>
