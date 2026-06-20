@@ -9,78 +9,126 @@
   <body>
     <main class="shell">
       <section class="intro" aria-labelledby="dashboard-title">
-        <p class="eyebrow">GitHub Pages static dashboard</p>
-        <h1 id="dashboard-title">Encrypted Stats Dashboard</h1>
+        <div>
+          <p class="eyebrow">Encrypted internal audit dashboard</p>
+          <h1 id="dashboard-title">Project stats and publishing safety</h1>
+          <p class="lede">Unlock aggregate status data for the private repository and public GitHub Pages dashboard.</p>
+        </div>
         <p class="notice">No raw personal data is included in this published dashboard.</p>
       </section>
 
       <section class="unlock-panel" aria-labelledby="unlock-title">
         <div>
-          <h2 id="unlock-title">Unlock aggregate stats</h2>
-          <p>Enter the dashboard password to decrypt the published data locally in this browser.</p>
+          <h2 id="unlock-title">Unlock audit status</h2>
+          <p>Enter the dashboard password to decrypt encrypted aggregate data locally in this browser.</p>
         </div>
 
         <form id="unlock-form" class="unlock-form">
-          <label for="password">Password</label>
+          <label for="password">Dashboard password</label>
           <div class="password-row">
             <input id="password" name="password" type="password" autocomplete="current-password" required>
             <button type="submit">Unlock</button>
           </div>
-          <p id="status" class="status" role="status" aria-live="polite">Encrypted stats are loaded only after unlock.</p>
+          <p id="status" class="status" role="status" aria-live="polite">Waiting for password. No data is decrypted yet.</p>
         </form>
       </section>
 
       <section id="dashboard" class="dashboard hidden" aria-live="polite">
-        <div class="section-heading">
-          <h2>Project statistics</h2>
-          <p>Aggregate values only.</p>
+        <div class="dashboard-header">
+          <div>
+            <p class="eyebrow">Unlocked dashboard</p>
+            <h2>Audit snapshot</h2>
+          </div>
+          <p class="notice secondary">This dashboard contains encrypted aggregate statistics only.</p>
         </div>
 
-        <div class="stats-grid">
-          <article class="stat-block">
+        <section class="overview-grid" aria-label="Core statistics">
+          <article class="metric-card">
             <span>Last updated</span>
-            <strong id="last-updated">-</strong>
+            <strong id="last-updated">Not available yet</strong>
+            <p id="dashboard-version">Version not available yet</p>
           </article>
-          <article class="stat-block">
-            <span>Total processed records</span>
-            <strong id="total-records">-</strong>
+          <article class="metric-card">
+            <span>Total records processed</span>
+            <strong id="total-records">Not available yet</strong>
+            <p>Aggregate processed count.</p>
           </article>
-          <article class="stat-block">
+          <article class="metric-card">
             <span>Valid records</span>
-            <strong id="valid-records">-</strong>
+            <strong id="valid-records">Not available yet</strong>
+            <p>Safe validation-ready records.</p>
           </article>
-          <article class="stat-block">
+          <article class="metric-card">
             <span>Duplicate records</span>
-            <strong id="duplicate-records">-</strong>
+            <strong id="duplicate-records">Not available yet</strong>
+            <p>Aggregate duplicate count.</p>
           </article>
-        </div>
+        </section>
 
-        <div class="detail-list">
-          <div class="detail-row">
-            <span>Data source summary</span>
-            <p id="source-summary">-</p>
-          </div>
-          <div class="detail-row">
-            <span>Import readiness</span>
-            <p id="import-readiness">-</p>
-          </div>
-          <div class="detail-row">
-            <span>Validation status</span>
-            <p id="validation-status">-</p>
-          </div>
-          <div class="detail-row">
-            <span>Published safety status</span>
-            <p id="published-safety">-</p>
-          </div>
-        </div>
+        <section class="content-grid">
+          <article class="panel">
+            <div class="panel-heading">
+              <h3>Data overview</h3>
+              <span id="source-count" class="status-chip neutral">Not available yet</span>
+            </div>
+            <div class="status-list">
+              <div class="status-row">
+                <span>Validation status</span>
+                <strong id="validation-status">Not available yet</strong>
+              </div>
+              <div class="status-row">
+                <span>Import readiness</span>
+                <strong id="import-readiness">Not available yet</strong>
+              </div>
+              <div class="status-row">
+                <span>Publishing safety status</span>
+                <strong id="publishing-status">Not available yet</strong>
+              </div>
+            </div>
+          </article>
 
-        <div class="reports">
-          <div class="section-heading">
-            <h2>Latest reports</h2>
-            <p>Repository report filenames only.</p>
+          <article class="panel">
+            <div class="panel-heading">
+              <h3>Publishing status</h3>
+              <span id="pages-status-chip" class="status-chip neutral">Not available yet</span>
+            </div>
+            <div class="status-list">
+              <div class="status-row">
+                <span>GitHub Pages status</span>
+                <strong id="pages-status">Not available yet</strong>
+              </div>
+              <div class="status-row">
+                <span>Public repo status</span>
+                <strong id="public-repo-status">Not available yet</strong>
+              </div>
+              <div class="status-row">
+                <span>Latest workflow status</span>
+                <strong id="workflow-status">Not available yet</strong>
+              </div>
+              <div class="status-row">
+                <span>Latest public commit</span>
+                <strong id="latest-public-commit">Not available yet</strong>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="action-panel" aria-labelledby="next-action-title">
+          <div>
+            <p class="eyebrow">Next recommended action</p>
+            <h3 id="next-action-title">Keep the public dashboard refreshed after safe aggregate updates.</h3>
+          </div>
+          <p id="next-action">Not available yet</p>
+          <a id="public-url" href="https://tatianasf.github.io/codex-community-stats/" rel="noopener">Open public dashboard</a>
+        </section>
+
+        <section class="reports">
+          <div class="panel-heading">
+            <h3>Latest reports</h3>
+            <span>Private repo references only</span>
           </div>
           <ul id="reports-list"></ul>
-        </div>
+        </section>
       </section>
     </main>
 
