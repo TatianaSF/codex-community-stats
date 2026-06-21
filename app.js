@@ -275,7 +275,7 @@
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    statusEl.textContent = "Расшифровка выполняется локально...";
+    statusEl.textContent = "Decrypting locally...";
     dashboardEl.classList.add("hidden");
 
     try {
@@ -284,7 +284,7 @@
       statusEl.textContent = "Готово. Агрегированные данные расшифрованы в этом браузере.";
       passwordInput.value = "";
     } catch {
-      statusEl.textContent = "Не удалось открыть отчет. Проверьте пароль и повторите попытку.";
+      statusEl.textContent = "Unlock failed. Check the password and try again.";
     }
   });
 }());
